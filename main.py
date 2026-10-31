@@ -24,7 +24,8 @@ from handlers.users.it import rt as it
 # from handlers.users.gg import rt as gg
 # from handlers.users.contact import rt as contact
 from handlers.users.type_top import rt as type_top
-from handlers.users.dice_top import rt as dice_top
+# from handlers.users.dice_top import rt as dice_top
+from handlers.users.bu_dice import rt as bu_dice
 
 
 
@@ -54,7 +55,8 @@ async def main():
     # dp.include_router(gg)
     # dp.include_router(contact)
     dp.include_router(type_top)
-    dp.include_router(dice_top)
+    # dp.include_router(dice_top)
+    dp.include_router(bu_dice)
 
 
     await dp.start_polling(bot)
