@@ -1,9 +1,9 @@
 from aiogram import types, filters, Bot
-from config.settings import ADMINS
+from config.settings import Admins
 
 class AdminFilter(filters.BaseFilter):
     async def __call__(self, msg: types.Message):
-        return str(msg.from_user.id) in ADMINS
+        return str(msg.from_user.id) in Admins
 
 class AdminGroupFilter(filters.BaseFilter):
     async def __call__(self, msg: types.Message, bot):

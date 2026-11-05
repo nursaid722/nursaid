@@ -1,7 +1,7 @@
-from aiogram import Router, types, F
-from filters.admin import AdminFilter
+from aiogram import Router, filters, types
 rt = Router()
-@rt.message(F.dice, AdminFilter())
+@rt.message(filters.Command("start"))
 async def start(msg: types.Message):
-   await msg.answer("Botga xush kelibsiz")
+    await msg.answer("Asalomu alaykum xurmatli foydalanuvchi")
+
 
