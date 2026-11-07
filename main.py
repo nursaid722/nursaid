@@ -31,6 +31,7 @@ from handlers.users.left_member import router as left_member_router
 from handlers.users.new_title import router  as new_title_router
 from handlers.users.new_photo import router as new_photo_router
 from handlers.users.delete_photo import router as delete_photo_router
+from handlers.users.reklama import rt as reklama
 
 
 
@@ -66,7 +67,7 @@ async def main():
     dp.include_router(new_title_router)
     dp.include_router(new_photo_router)
     dp.include_router(delete_photo_router)
-
+    dp.include_router(reklama)
 
 
     await dp.start_polling(bot)
