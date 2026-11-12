@@ -1,40 +1,44 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from config.settings import BOT_TOKEN, Admins
 import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.exceptions import TelegramNetworkError,TelegramUnauthorizedError
-from config.settings import BOT_TOKEN
-# from handlers.users.start import rt as start
-# from handlers.users.info import rt as help
-# from handlers.users.beckend import rt as beckend
-# from handlers.users.bot_haqida import rt as bot_haqida
-# from handlers.users.help import rt as info
-# from handlers.users.jorabek import rt as jorabek
-# from handlers.users.me import rt as me
-# from handlers.users.cobalt import rt as cobalt
-# from handlers.users.nexia_2 import rt as nexia_2
-# from handlers.users.rasm import rt as rasm
-# from handlers.users.reply import rt as reply
-# from handlers.users.delete import rt as delete
-# from handlers.users.answer_dice import rt as answer_dice
-# from handlers.users.ism_korish import rt as ism_korish
-# from handlers.users.tekshir import rt as tekshir
-# from handlers.users.date import rt as date
-# from handlers.users.pin import rt as pin
-# from handlers.users.mushuk import rt as mushuk
-# from handlers.users.it import rt as it
-# # from handlers.users.gg import rt as gg
-# # from handlers.users.contact import rt as contact
-# from handlers.users.type_top import rt as type_top
-# # from handlers.users.dice_top import rt as dice_top
-# from handlers.users.bu_dice import rt as bu_dice
+# from config.settings import BOT_TOKEN, Admins
+from handlers.users.start import rt as start
+from handlers.users.info import rt as help
+from handlers.users.beckend import rt as beckend
+from handlers.users.bot_haqida import rt as bot_haqida
+from handlers.users.help import rt as info
+from handlers.users.jorabek import rt as jorabek
+from handlers.users.me import rt as me
+from handlers.users.cobalt import rt as cobalt
+from handlers.users.nexia_2 import rt as nexia_2
+from handlers.users.rasm import rt as rasm
+from handlers.users.reply import rt as reply
+from handlers.users.delete import rt as delete
+from handlers.users.answer_dice import rt as answer_dice
+from handlers.users.ism_korish import rt as ism_korish
+from handlers.users.tekshir import rt as tekshir
+from handlers.users.date import rt as date
+from handlers.users.pin import rt as pin
+from handlers.users.mushuk import rt as mushuk
+from handlers.users.it import rt as it
+# from handlers.users.gg import rt as gg
+# from handlers.users.contact import rt as contact
+from handlers.users.type_top import rt as type_top
+# from handlers.users.dice_top import rt as dice_top
+from handlers.users.bu_dice import rt as bu_dice
 from handlers.users.new_members import router as new_members_router
 from handlers.users.left_member import router as left_member_router
 from handlers.users.new_title import router  as new_title_router
 from handlers.users.new_photo import router as new_photo_router
 from handlers.users.delete_photo import router as delete_photo_router
 from handlers.users.reklama import rt as reklama
-
-
-
+from handlers.anketa import rt as anketa
+# from handlers.car_dealer import rt as avtosalon
+from handlers.avtosalon import rt as avtosalon
 dp = Dispatcher()
 async def main():
     bot = Bot(BOT_TOKEN)
@@ -62,14 +66,14 @@ async def main():
     # dp.include_router(type_top)
     # dp.include_router(dice_top)
     # dp.include_router(bu_dice)
-    dp.include_router(new_members_router)
-    dp.include_router(left_member_router)
-    dp.include_router(new_title_router)
-    dp.include_router(new_photo_router)
-    dp.include_router(delete_photo_router)
-    dp.include_router(reklama)
-
-
+    # dp.include_router(new_members_router)
+    # dp.include_router(left_member_router)
+    # dp.include_router(new_title_router)
+    # dp.include_router(new_photo_router)
+    # dp.include_router(delete_photo_router)
+    # dp.include_router(reklama)
+    dp.include_router(anketa)
+    dp.include_router(avtosalon)
     await dp.start_polling(bot)
 if __name__ == "__main__":
     try:
