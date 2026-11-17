@@ -4,8 +4,8 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from config.settings import BOT_TOKEN, Admins
 import asyncio
 from aiogram import Bot, Dispatcher
-from aiogram.exceptions import TelegramNetworkError,TelegramUnauthorizedError
-# from config.settings import BOT_TOKEN, Admins
+from aiogram.exceptions import TelegramNetworkError, TelegramUnauthorizedError
+
 from handlers.users.start import rt as start
 from handlers.users.info import rt as help
 from handlers.users.beckend import rt as beckend
@@ -25,23 +25,23 @@ from handlers.users.date import rt as date
 from handlers.users.pin import rt as pin
 from handlers.users.mushuk import rt as mushuk
 from handlers.users.it import rt as it
-# from handlers.users.gg import rt as gg
-# from handlers.users.contact import rt as contact
 from handlers.users.type_top import rt as type_top
-# from handlers.users.dice_top import rt as dice_top
 from handlers.users.bu_dice import rt as bu_dice
 from handlers.users.new_members import router as new_members_router
 from handlers.users.left_member import router as left_member_router
-from handlers.users.new_title import router  as new_title_router
+from handlers.users.new_title import router as new_title_router
 from handlers.users.new_photo import router as new_photo_router
 from handlers.users.delete_photo import router as delete_photo_router
 from handlers.users.reklama import rt as reklama
 from handlers.anketa import rt as anketa
-# from handlers.car_dealer import rt as avtosalon
 from handlers.avtosalon import rt as avtosalon
-dp = Dispatcher()
+
+from keyboards.tugma_inline import router as ai_router
+
 async def main():
     bot = Bot(BOT_TOKEN)
+    dp = Dispatcher()
+
     # dp.include_router(start)
     # dp.include_router(beckend)
     # dp.include_router(bot_haqida)
@@ -61,10 +61,7 @@ async def main():
     # dp.include_router(pin)
     # dp.include_router(mushuk)
     # dp.include_router(it)
-    # dp.include_router(gg)
-    # dp.include_router(contact)
     # dp.include_router(type_top)
-    # dp.include_router(dice_top)
     # dp.include_router(bu_dice)
     # dp.include_router(new_members_router)
     # dp.include_router(left_member_router)
@@ -72,9 +69,12 @@ async def main():
     # dp.include_router(new_photo_router)
     # dp.include_router(delete_photo_router)
     # dp.include_router(reklama)
-    dp.include_router(anketa)
-    dp.include_router(avtosalon)
+    # dp.include_router(anketa)
+    # dp.include_router(avtosalon)
+    dp.include_router(ai_router)
+
     await dp.start_polling(bot)
+
 if __name__ == "__main__":
     try:
         print("bot ishga tushdi!")
@@ -85,5 +85,5 @@ if __name__ == "__main__":
         print("internetga ulanmagansiz!")
     except TelegramUnauthorizedError:
         print("token xato!")
-    except RuntimeError:
-        print("roterlarda hatolik!")
+    except RuntimeError as e:
+        print(f"routerlarda xatolik: {e}")
